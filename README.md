@@ -1,12 +1,14 @@
 # Curso de Python 
 
-A python course in Spanish
+A python course in Spanish for beginners.
 
-Slides using Remarkjs (https://github.com/gnab/remark)
+Open the html files in your browser.
+
 
 ### Notes:
-To use chrome extensions with your presentation, you can launch a http server in your system using node. 
+- To use chrome extensions with your presentation, you can launch a http server in your system using node. 
 ````
 npm install http-server -g
 http-server
 ````
+- Slides using Remarkjs (https://github.com/gnab/remark)
