@@ -1,8 +1,12 @@
 # Curso de Python 
 
-A python course in Spanish for beginners.
+Spanish:
+Un curso de Python en español para principiantes pero con conomientos de programación.
+Desgarca los ficheros del git y abre los ficheros html en tu navegador.
 
-Open the html files in your browser.
+English:
+A python course in Spanish for beginners in Python, but with programming skills.
+Download the git and Open the html files in your browser.
 
 
 ### Notes:
@@ -12,3 +16,4 @@ npm install http-server -g
 http-server
 ````
 - Slides using Remarkjs (https://github.com/gnab/remark)
+- Lovely SVG icons from (http://svgicons.sparkk.fr/)
