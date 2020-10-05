@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>C4-Python</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+ /* file saved to local directory */
+    @import url("gh-fork-ribbon.css");
+    /* alternatively fetch from cdnjs */
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css");
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+
+      div.my-header {
+        background-color: #000000;
+        /*background: -webkit-gradient(linear, left top, right top, color-stop(0%,#606550), color-stop(0%,#409494), color-stop(0%,#ffffff), color-stop(10%,#ffffff), color-stop(25%,#b3fbb3), color-stop(100%,#008c2e));*/
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        height: 22px;
+        width: 100%;
+        text-align: left;
+      }
+      div.my-header span{
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+        font-size: 16px;
+
+      }
+      div.my-footer {
+        /*border-top: 1px solid #ccc;*/
+        font-size: 8pt;
+        text-align: left;
+        position: fixed;
+        bottom: 0px;
+        left: 10px;
+        /*height: 30px;*/
+        /*width: 100%;*/
+      }
+
+      div.my-footer p {
+      /*    margin-top: 10px;
+          height: 30px;*/
+          margin-bottom: 0px;
+      }
+      div.my-footer img {
+        vertical-align:middle;
+      }
+
+      img.alt {
+        width: 100px;
+      }
+
+      .cols {
+        display: flex;
+      }
+      
+      .fifty {
+        flex: 50%;
+        margin-left: 10px
+      }
+
+      .work{
+        float: right;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 99;
+        margin-right: -5px;
+      }
+
+
+      .bottom-content {
+        position: absolute;
+        top: 90%;
+      }
+
+  
+        #myline {
+          margin-bottom: -50px;
+          width: 6px;
+          height: 2px;
+          background: red;
+          position: relative;
+          animation: mymove 5s infinite;
+          animation-iteration-count: infinite;
+        }
+
+        @keyframes mymove {
+          from {left: 310px;}
+          to {left: 0px;}
+
+            0%   {opacity: 1;}
+            50%  {opacity: 0.7;}
+            70%  {opacity: 0.5;}
+            90%  {opacity: 0.2;}
+            100% {opacity: 0;}
+        }
+        }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+
+
+  </head>
+  <body>
+    <textarea id="source">
+
+layout: true
+ <div class="my-header">
+
+    <svg height="15" width="18" viewBox="0 0 24 24"xmlns="http://www.w3.org/2000/svg" style="fill: #ffffff; margin-left:4px;" role="img"><title>Introducción a Python</title><path d="M14.31.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.83l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.23l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.24l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05 1.07.13zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22zM21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z"></path></svg>
+
+    <span>C4. Python - librerías para la administración de sistemas </span>
+
+ 
+ </div>
+ <div class="my-footer">
+    <p> 2020 - Isaac Lera </p>
+ </div>
+ 
+---
+class: center, middle
+# C4. Python para administradores de sistemas
+### Librerías propias: sys, os, glob, shutils, subprocess
+
+
+---
+
+
+class: center, middle
+# Entrada y salidas
+
+---
+
+# Manipulación de ficheros I
+
+Dos maneras de interactuar con ficheros o streams:
+
+```python
+with open("file.txt","r") as f:
+  f.readlines() #dentro del indexado del with f-permanecerá abierto
+#al salir se cierra
+
+f = open("file.txt","r")
+f.readlines()
+f.close()
+```
+
+Modos:
+- "r" Opens the file for reading. If the file doesn't already exists you will get FileNotFoundError error.
+- "w" Opens the file for writing. In this mode, if file specified doesn't exists, it will be created. If the file exists, then it's data is destroyed.
+- "a" Opens the file in append mode. If the file doesn't exists this mode will create the file. If the file already exists then it appends new data to the end of the file rather than destroying data as "w" mode does.
+
+
+---
+
+# Manipulación de ficheros II
+
+## Métodos:
+
+- **read([num])** Reads the specified number of characters from the file and returns them as string. If num is omitted then it reads the entire file.
+- **readline()**  Reads a single line and returns it as a string.
+- **readlines()** Reads the content of a file line by line and returns them as a list of strings.
+- **write(str)**  Writes the string argument to the file and returns the number of characters written to the file.
+- **seek(offset, origin)**  Moves the file pointer to the given offset from the origin.
+- **tell()**  Returns the current position of the file pointer.
+- **close()** Closes the file
+
+---
+
+# Manipulación de ficheros III
+
+
+```python
+f = open("readme.txt","w")
+f.write("#Heading")
+f.write("## Heading")
+f.write("###  Heading")
+f.close()       #Es importante cerrar el fichero: $lsof
+```
+
+---
+
+# Manejo de entradas, salidas y pipes
+
+En bash es muy común que los comandos puedan propagar entradas/salidas entre ellos.
+
+```terminal
+ls | wc -l
+echo "Hola" >> temporal.txt
+```
+
+La librería [sys](https://docs.python.org/3/library/sys.html) permite interactuar con el interprete.
+
+ ```python
+import sys
+print(sys.version)  #Muestra que interprete de python estamos usando
+```
+
+Esta librería nos pemite interactuar con los *ficheros/streams* de entrada/salida que tiene un proceso conectado (stdin y stdout).
+
+---
+
+## Ejemplo con stdin
+
+Hacemos un script para contar caracteres.
+```python
+import sys
+
+print(type(sys.stdin))
+word = ""
+with (sys.stdin) as f:
+  word+= f.read()
+
+print(word)
+print(len(word))
+```
+
+```terminal
+echo "Halo" | python contar.py
+```
+
+
+---
+
+# Ejemplo con stdout
+
+```python
+import sys
+salida = sys.stdout               # Guardamos la salida original
+sys.stdout = open('log.txt', 'w') # redirigimos las salidas hacia un file
+print("testing123")               # No ocurre nada!?
+sys.stdout.close()                # se cierra
+sys.stdout = salida               # se restaura prompt
+print("Regreso a la nueva-normalidad")   
+```
+
+---
+
+<img class="work" src="icons/bookmark-star-fill.svg" alt="TODO" width="100" height="100" title="Bookmark"/>
+# Actividad
+
+Vamos a crear el script siguiente para poder multiplicar la salida del otro por un número.
+
+```terminal
+echo "Halo" | python contar.py | python multiplicar.py
+```
+
+???
+
+```python
+import sys
+
+word = 0
+with (sys.stdin) as f:
+  word = f.read()
+print(int(word)*2)
+
+
+import sys
+
+word = ""
+with (sys.stdin) as f:
+  word+= f.read()
+print(len(word))
+```
+
+---
+
+# Lectura de ficheros de configuración
+
+En Python existen librerías para cargar ficheros de configuración y simplificar la flexibilidad de nuestros scripts.
+
+Como ejemplo, vamos a crear un fichero llamado *conf.ini* con el siguiente contenido:
+
+```txt
+[server_uib]
+url = https://192.129.43.1/
+```
+
+Y ahora creamos el código para manipularlo:
+
+```python
+from configparser import ConfigParser
+p = ConfigParser()
+p.read('conf.ini')
+print(p.get('server_uib', 'url'))
+```
+
+---
+
+# Argumentos por línea de comando
+
+La librería **sys** incluye la entrada de argumentos por línea de comando.
+
+- sys.argv es la lista, la variable, con los argumentos.
+
+```terminal
+python3 test.py 3 4 5 6
+```
+
+Fichero test.py:
+```python
+import sys
+print("Argumentos: ",sys.argv)
+```
+
+---
+
+## Argumentos por línea de comando - Tratamiento
+
+La librería [**getopt**](https://docs.python.org/3/library/getopt.html) permite parsear los argumentos introducidos por *sys.argv*
+
+```terminal
+python3 test.py --version
+python3 test.py -v
+```
+
+En la documentación:
+```
+getopt.getopt(args, shortopts, longopts=[])
+```
+
+Fichero test.py:
+```python
+import sys
+import getopt
+opts, args = getopt.getopt(sys.argv[1:],"v",["version"]) #genera una excepcion si el comando no esta definido
+print("Opts: ",opts)
+print("Args: ",args)
+for o, a in opts:
+  if o in ("-v","--version"):       #IN con tuplas, y con listas
+    print("Version 0.10.0")
+
+```
+
+
+---
+
+# Gestión de ficheros
+
+La librería [**os**](https://docs.python.org/3/library/os.html) incluye funcionalidades para interactuar con el sistema operativo. Entre ellas, la manipulación de ficheros.
+
+La librería [**glob**](https://docs.python.org/3/library/glob.html) encuentra los *pathnames* que concuerdan con un patrón específico. Similar al comando [*find*](http://www.hypexr.org/linux_find_help.php) de Unix.
+
+Probemos algunas funciones: [os.walk](https://docs.python.org/3/library/os.html#os.walk)
+
+```python
+import os
+for s,i in enumerate(os.walk("/")):
+  if s>3: break
+  print(i)
+```
+Lo mismo pero mejorado:
+```python
+for s,(root,dirs,files) in enumerate(os.walk("/")):
+  if s>3: break
+  print("La carpeta %s contiene %i ficheros y %i directorios"%(root,len(files),len(dirs)))
+```
+
+
+---
+
+# Gestión de ficheros
+
+Listado de directorios:
+
+```python
+import os
+os.listdir("/")
+```
+O bien,
+
+```python
+import glob
+glob.glob("/*/")
+```
+
+O bien,
+
+```python
+import os
+for f in os.scandir("."): 
+  if f.is_dir(): #pero que es f?
+    print(f) 
+
+
+print(type(f))   #f es class os.DirEntry
+```  
+
+---
+
+# Gestión de ficheros
+
+Otra funcionalidad importante es: [*os.stat*](https://docs.python.org/3/library/os.html#os.stat)
+Equivalente al comando *stat*
+
+```python
+import os
+for f in os.scandir("."): 
+  if f.is_dir(): #pero que es f?
+    print(f) #f es class os.DirEntry
+  else:
+    print(f.path)
+    print(os.stat(f).st_size)
+    print(os.path.getsize(f.path))
+```  
+
+---
+
+# Gestión de ficheros
+
+Vamos a realizar varias funciones con ficheros. 
+
+Creamos un directorio, un fichero y lo borramos de nuevo!
+
+```python
+import os
+import glob
+dir_name ="testCurso"
+os.mkdir(dir_name) # or os.makedirs
+glob.glob("test*/")
+
+new_file = "%s/test_fichero.txt"%dir_name
+
+with open(new_file, 'w') as f: #Creamos un fichero:
+  f.write("Hola y adios.")
+
+os.remove(new_file)
+os.rmdir(dir_name)
+```
+
+
+---
+
+# Gestión de ficheros con shutils
+
+
+La librería [**shutils**](https://docs.python.org/3/library/shutil.html) permite manipular dicheros a "alto nivel".
+
+- Copiar jerarquías de directorios.
+- Mover ficheros
+- Copiar ficheros
+
+
+```python
+import shutil  
+shutil.copyfile('/path/to/file', '/path/to/other/phile') 
+shutil.copytree ( "src" , "dest" )
+```
+
+---
+
+
+class: center, middle
+# Gestión de procesos 
+
+---
+
+# Subprocess module
+
+Desde Python podemos controlar y comunicar nuevos procesos.
+
+Su lanzamiento se realiza con [.run()](https://docs.python.org/3/library/subprocess.html#subprocess.run)
+
+```python
+import subprocess
+subprocess.run(["ls","-l"]) #La entrada tiene la misma estructura que sys.argv 
+
+process = subprocess.run(["ls","-l"]) 
+print(process.returncode)  # y su stdout
+print(process.stdout)
+```
+Podemos capturar su salida redirigiendo su stdout o ignorandolo */dev/null*
+
+```python
+process = subprocess.run(["ls","-l"],stdout=subprocess.PIPE) 
+print(process.stdout)
+
+```
+
+
+---
+
+# Subprocess module
+
+La generación de procesos recae en [Popen](https://docs.python.org/3/library/subprocess.html#subprocess.Popen). Lo cual permite controlar más eficientemente el proceso y su comunicación para casos más complejos.
+
+Los procesos son generados asincronamente por defecto.
+
+```python
+from subprocess import Popen
+p = Popen(['python',"otroscript.py"]) # se lanza el proceso 
+# ... se hacen otras cosas 
+p.terminate() # se detiene
+```
+
+```python
+import time
+from subprocess import Popen
+
+p = Popen(['python',"otroscript.py"]) # se lanza el proceso 
+time.sleep(10) #10 segundos
+if not p.poll():
+  p.kill() # se mata
+```
+
+
+---
+
+# Subprocess module
+
+La generación de procesos recae en [Popen](https://docs.python.org/3/library/subprocess.html#subprocess.Popen). Lo cual permite controlar más eficientemente el proceso y su comunicación para casos más complejos.
+
+Los procesos son generados asincronamente por defecto.
+
+```python
+from subprocess import Popen
+p = Popen(['python',"otroscript.py"]) # se lanza el proceso 
+# ... se hacen otras cosas 
+p.terminate() # se detiene
+```
+
+```python
+import time
+from subprocess import Popen
+
+p = Popen(['python',"otroscript.py"]) # se lanza el proceso 
+time.sleep(10) #10 segundos
+if not p.poll():
+  p.kill() # se mata
+```
+
+---
+
+<img class="work" src="icons/bookmark-star-fill.svg" alt="TODO" width="100" height="100" title="Bookmark"/>
+# Actividad
+
+El objetivo es generar un script que liste los ficheros de un directorio. 
+Para todos aquellos ficheros con extensión ".txt" ha de lanzar un proceso del sistema (un subprocess) para mostrar su contenido (mediante comando "cat"). A parte ha de procesar dicha salida, si detecta que el contenido contiene solo dígitos, ha de lanzar otro script para sumarlos.
+
+**Nota:**
+
+Tengamos la siguiente estructura de ficheros para probarlo:
+
+```terminal
+mkdir C4Actividad
+echo "3 4 5 6 7 " >> C4Actividad/uno.txt
+echo "1 4 5 63 7.5 " >> C4Actividad/dos.txt
+echo "1 4 Hola 63 7.5 " >> C4Actividad/tres.txt
+touch C4Actividad/cuatro.txt
+echo "No no no" >> C4Actividad/cinco.txt
+echo "1 2 3" >> C4Actividad/seis.cat
+```
+
+---
+
+class: center, middle
+
+### De nuevo, este capítulo es la punta de un gran iceberg con respecto a las funcionalidades que pueden realizarse/automatizarse con Python.
+
+## Con Python también se puede "gestionar" redes, con librerías como [**socket**](https://docs.python.org/3/library/socket.html) y [**netsnmp**](http://www.net-snmp.org/) para el prócolo SNMP.
+
+
+---
+background-color: #eeeeee
+class: center, middle
+
+# Fin C4.
+
+<div id="myline"></div>
+<a href="C5.html">
+<svg id="move" class="svg-icon" viewBox="0 0 24 24" height="100" width="100" alt="Siguiente Tema">
+    <circle fill="#aaaaaa" cx="3.274" cy="6.198" r="0.585"></circle>
+    <rect x="6.198" y="4.736" fill="#aaaaaa" width="0.585" height="2.34"></rect>
+    <path fill="#aaaaaa" d="M15.849,11.669v-1.064l-1.072-0.715l-0.829,1.659c-0.428,0.174-0.73,0.592-0.73,1.083c0,0.265,0.091,0.507,0.24,0.703l-0.201,2.806h1.759l0.191-2.676c0.216-0.212,0.35-0.507,0.35-0.833c0-0.102-0.017-0.2-0.042-0.294L15.849,11.669z M14.387,13.217c-0.322,0-0.585-0.262-0.585-0.585c0-0.322,0.262-0.585,0.585-0.585c0.322,0,0.585,0.262,0.585,0.585C14.971,12.954,14.709,13.217,14.387,13.217z"></path>
+    <polygon fill="#aaaaaa" points="15.721,7.368 19.066,7.368 19.066,3.859 16.141,2.894 15.556,2.104 11.462,2.104 10.877,2.894 8.538,3.859 8.538,7.368 11.297,7.368  "></polygon>
+    <path fill="#aaaaaa" d="M5.029,7.368h0.585V4.444h-2.34l-1.755,1.17v0.877H0.496c-0.081,0-0.146,0.065-0.146,0.146s0.065,0.146,0.146,0.146h1.024v0.585H0.642C0.48,7.368,0.35,7.499,0.35,7.66S0.48,7.953,0.642,7.953h3.802L5.029,7.368zM3.274,7.076c-0.485,0-0.877-0.393-0.877-0.877s0.393-0.877,0.877-0.877s0.877,0.393,0.877,0.877S3.758,7.076,3.274,7.076z"></path>
+    <path fill="#aaaaaa" d="M18.96,16.141l-0.631-2.944c0.094-0.168,0.151-0.359,0.151-0.565c0-0.295-0.113-0.561-0.292-0.766v-1.427l0.71-2.486H9.708c-0.646,0-1.17,0.524-1.17,1.17c0,0.162,0.033,0.317,0.093,0.457l-0.682,2.047c-0.346,0.203-0.58,0.575-0.58,1.005c0,0.152,0.031,0.297,0.084,0.431l-1.099,3.079h1.863l0.407-1.141l1.504,0.725l0.761-1.581l-1.51-0.711c0.201-0.209,0.33-0.488,0.33-0.801c0-0.162-0.033-0.316-0.093-0.457l0.556-1.668l1.73-1.384h2.778l1.755,1.17v1.48v0.093c-0.18,0.206-0.292,0.472-0.292,0.766c0,0.392,0.195,0.738,0.492,0.95l0.536,2.559H18.96z M8.538,13.217c-0.322,0-0.585-0.262-0.585-0.585c0-0.322,0.262-0.585,0.585-0.585c0.322,0,0.585,0.262,0.585,0.585C9.123,12.954,8.86,13.217,8.538,13.217z M9.708,9.708c-0.322,0-0.585-0.262-0.585-0.585c0-0.322,0.262-0.585,0.585-0.585c0.322,0,0.585,0.262,0.585,0.585C10.292,9.445,10.03,9.708,9.708,9.708z M17.311,8.538c0.322,0,0.585,0.262,0.585,0.585c0,0.322-0.262,0.585-0.585,0.585s-0.585-0.262-0.585-0.585C16.726,8.8,16.988,8.538,17.311,8.538z M16.726,12.632c0-0.322,0.262-0.585,0.585-0.585s0.585,0.262,0.585,0.585c0,0.322-0.262,0.585-0.585,0.585S16.726,12.954,16.726,12.632z"></path>
+    <rect x="7.368" y="4.736" fill="#aaaaaa" width="0.585" height="2.34"></rect>
+    <polygon fill="#aaaaaa" points="11.89,14.086 11.468,14.288 10.517,16.265 10.622,16.721 11.413,17.101 12.68,14.466  "></polygon>
+    <polygon fill="#aaaaaa" points="19.285,16.726 17.092,16.726 16.726,17.019 16.726,17.896 19.65,17.896 19.65,17.019  "></polygon>
+    <polygon fill="#aaaaaa" points="12.997,16.726 12.632,17.019 12.632,17.896 15.556,17.896 15.556,17.019 15.191,16.726  "></polygon>
+    <polygon fill="#aaaaaa" points="5.979,16.726 5.613,17.019 5.613,17.896 8.538,17.896 8.538,17.019 8.172,16.726  "></polygon>
+    <path fill="#aaaaaa" d="M5.933,13.752l0.558,0.263l0.344-0.963c-0.035-0.138-0.052-0.278-0.052-0.419c0-0.536,0.253-1.044,0.672-1.375l0.634-1.903l-2.461,2.109c-0.005,0-0.01-0.002-0.015-0.002c-0.646,0-1.17,0.524-1.17,1.17c0,0.646,0.524,1.17,1.17,1.17C5.725,13.802,5.831,13.781,5.933,13.752z M5.029,12.632c0-0.322,0.262-0.585,0.585-0.585s0.585,0.262,0.585,0.585c0,0.322-0.262,0.585-0.585,0.585S5.029,12.954,5.029,12.632z"></path>
+  </svg>
+</a>
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
