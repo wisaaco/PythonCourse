@@ -1,8 +1,8 @@
 # Curso de Python 
 
 Spanish:
-Un curso de Python en español para principiantes pero con conomientos de programación.
-Desgarca los ficheros del git y abre los ficheros html en tu navegador.
+Un curso de Python en español para personal con conomientos de programación.
+Descarga los ficheros del git y abre los ficheros html en tu navegador.
 
 English:
 A python course in Spanish for beginners in Python, but with programming skills.
