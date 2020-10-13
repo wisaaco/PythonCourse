@@ -246,9 +246,9 @@ else:                    #opcional
   bloque tabulado
 bloque de código siguiente
 ```
-- No se utilizan paréntesis en la condición sino es necesario.
+- No es necesario utilizar paréntesis en la condición al no ser que la expresión lo requiera.
 - En los controles de flujo no hay llaves, ni nada por el estilo (JAVA,C,....) 
-- El código pertenece al bloque si está *tabulado*
+- El código pertenece al bloque si está *tabulado/sangrado*
  
 
 #### Setencia *If* - Operador ternario
@@ -319,7 +319,7 @@ lista.remove(3)      #Elimina el primer elemento por su valor
 
 # Listas II - Métodos preexistentes/builtin
 
-Ciertos tipos tienen funciones comunes en Python y una lista es una **secuencia** de objetos: (índices y valores).
+Ciertos tipos de datos tienen funciones comunes en Python y una lista es una **secuencia** de objetos: (índices y valores).
 
 ```python
 len(lista)           #Devuelve la longitud
@@ -328,6 +328,7 @@ lista[0:3]           #Slicing - Selección de elementos por rango
 3 in lista           #Devuelve Booleano si el elemento está en la lista
 ```
 
+**Duck programming style**!
 ---
 
 # Listas III - Métodos preexistentes/builtin
@@ -370,7 +371,8 @@ for color in colores:
       break
   print(color)
 
-for c in color: #Alerta: la var. color ahora está definida!
+#Visibilidad de las variables
+for c in color: #Después del primer for, color está definido!
   print(c)
 ```
  
@@ -612,7 +614,7 @@ contar = "a ba a bb a ba b b b a aa"
 ```
 
 #### Observación:
-Estas funcionalidades se pueden realizar con otros métodos (futuro temario): map, Counter
+Estas funcionalidades pueden realizarse con métodos como map o Counter, lo veremos en próximas unidades.
 
 ???
 ```python
