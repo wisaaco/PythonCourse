@@ -521,7 +521,7 @@ else:
 
 # Tuplas
 
-Una *tuple* es una colección de objetos. Se define con paréntesis. Útiles para el empaquetado de información.
+Una *tuple* es una colección de objetos. Se define con paréntesis. Útiles para el empaquetado de información. Son objetos inmutables.
 
 ```python
 carta = ("naipe1","paloOros")
@@ -530,6 +530,8 @@ print(carta[0])
 print(carta[1])
 naipe,palo = carta
 naipe,_ = carta     #!
+
+carta[0] = "naipe2" #!
 
 majorcaAt = (2.660690,39.591579) #long,lat
 long,lat = majorcaAt 
@@ -559,9 +561,10 @@ agenda = dict()  #tipado
 agenda = {"ana":923980,"pepe":230294,"bella":123094}
 agenda.keys()
 agenda.values()
+agenda = dict.fromkeys(['a', 'b'], 0)
 ```
 
-Operaciones:
+[Operaciones](https://www.w3schools.com/python/python_ref_dictionary.asp):
 ```python
 agenda["isaac"]=4923034  #Añadir elemento
 agenda["isaac"]=0        #Añadir elemento: sustituye el valor
@@ -570,6 +573,7 @@ del agenda["pepe"]       #Borrar elemento
 "isaac" in agenda.keys()  
 "isaac" in agenda.values()
 len(agenda)              #Número de elementos
+
 ```
 ---
 
@@ -587,8 +591,13 @@ areas = {name:code for code,name in postal} # compresiones
 
 for name,code in areas.items():     # unpacking
   print(name,code)
-```
 
+#nesting
+d = {'name': {'first': 'J', 'last': 'M'}, 'jobs': ['dev', 'tech'],'age': 40}
+
+d["name"]["first"]
+d["jobs"].append("prog")
+```
 ---
 
 <img class="work" src="icons/bookmark-star-fill.svg" alt="TODO" width="100" height="100" title="Bookmark"/>
@@ -646,6 +655,7 @@ Un grupo es una colección unica de objetos.
 ```python
 g = set()              # definicion
 
+
 tags = ["a","br","p","p","a","body"]
 g = set(tags)
 
@@ -655,9 +665,10 @@ e = g.pop()            # retirar un elemento
 ```
 Operaciones
 ```python
-g1 = set(["a","b","c"])
-g2 = set(["a","d","e"])
-g3 = set(["a"])
+g1 = set(["a","b","c"]) #una lista
+g2 = {"a","d","e"}      #unos elementos
+g3 = {"a"} 
+g = {} #!
 
 print(g1.intersection(g2))
 print(g1.union(g2))

@@ -191,10 +191,10 @@ from flask import Flask, escape, request
 
 app = Flask(__name__)
 
-@app.route('/')                           # wrappers - no los veremos
+@app.route('/')                           # wrappers - curso avanzado
 def hello():
     name = request.args.get("name", "World")
-    return "Hello, {escape(name)}!"
+    return "Hello %s!"%name
 
 if __name__ == '__main__':                # double_underscore, curso avanzado
     app.run(port='8000', debug=True)    
@@ -213,7 +213,7 @@ python -m pip install Flask
 
 python -m pip list
 
-
+http://127.0.0.1:8000/?name=Isaac
 
 
 ---
@@ -721,7 +721,7 @@ class: center, middle
 
 ### Se combinan y solapan con múltiples herramientas y lenguajes: Autentificación, JS, Bootstrap, Angular/Reactjs,...
 
-#### Esto es solo una mínuscula parte del iceberg
+#### Esto es solo una minúscula parte del iceberg
 
 ---
 background-color: #eeeeee
